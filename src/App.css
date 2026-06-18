@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: #E8EAF6;
+  color: #1e293b;
+}
+
+#root { min-height: 100vh; }
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #E8EAF6;
+  padding: 16px;
+  gap: 12px;
+  position: relative;
+}
+
+/* 헤더 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-title { font-size: 20px; font-weight: 800; color: #1e293b; }
+.header-sub { font-size: 11px; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+.char-box {
+  width: 52px; height: 52px;
+  background: #EEF2FF;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* 상단/하단 그리드 */
+.top-row {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 12px;
+}
+.bottom-row {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 12px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* 카드 */
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 16px 18px;
+  box-shadow: 0 2px 10px rgba(99,102,241,0.07);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.card-label {
+  font-size: 11px; font-weight: 700; color: #94a3b8;
+  text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px;
+}
+
+/* 잔액 카드 - 연한 그라데이션 */
+.balance-card {
+  background: linear-gradient(135deg, #C7D2FE, #DDD6FE);
+  border-radius: 18px;
+  padding: 18px 20px;
+  display: flex; flex-direction: column;
+}
+.balance-label { font-size: 11px; font-weight: 700; color: #6366F1; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+.balance-amount { font-size: 34px; font-weight: 800; color: #3730A3; margin-bottom: 4px; }
+.balance-unit { font-size: 14px; font-weight: 600; color: #6366F1; margin-left: 4px; }
+.balance-sub { font-size: 12px; color: #6366F1; margin-bottom: 14px; }
+.balance-bar-bg { background: rgba(255,255,255,0.5); border-radius: 6px; height: 8px; overflow: hidden; margin-bottom: 6px; }
+.balance-bar-fill { height: 100%; background: #4F46E5; border-radius: 6px; transition: width 0.5s; }
+.balance-add { display: flex; gap: 8px; margin-top: auto; }
+.balance-input {
+  flex: 1; padding: 9px 12px;
+  background: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.8);
+  border-radius: 10px; color: #3730A3; font-size: 13px; font-weight: 700;
+  font-family: 'Inter', sans-serif; outline: none;
+}
+.balance-input::placeholder { color: rgba(55,48,163,0.45); font-weight: 600; }
+.balance-add-btn {
+  padding: 9px 16px; background: #4F46E5; color: white; border: none;
+  border-radius: 10px; font-size: 13px; font-weight: 800; cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+
+/* 통계 카드 */
+.stat-value { font-size: 26px; font-weight: 800; }
+.stat-sub { font-size: 12px; color: #94a3b8; margin-top: 4px; }
+
+/* 카테고리 버튼 */
+.cat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 6px; margin-bottom: 12px; }
+.cat-btn {
+  padding: 10px 4px; background: #F4F6FF; border: 1.5px solid #E0E4FF;
+  border-radius: 12px; cursor: pointer; display: flex; flex-direction: column;
+  align-items: center; gap: 3px; font-family: 'Inter', sans-serif; transition: all 0.15s;
+}
+.cat-btn .emoji { font-size: 20px; }
+.cat-btn .name { font-size: 9px; font-weight: 700; color: #94a3b8; }
+
+/* 계산기 키패드 */
+.calc-display {
+  padding: 12px 14px; background: #F4F6FF; border: 1.5px solid #E0E4FF;
+  border-radius: 12px; font-size: 22px; font-weight: 800; color: #1e293b;
+  text-align: right; margin-bottom: 10px; min-height: 50px;
+  display: flex; align-items: center; justify-content: flex-end;
+}
+.calc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; margin-bottom: 12px; }
+.calc-key {
+  padding: 12px 0; background: #F4F6FF; border: 1.5px solid #E0E4FF;
+  border-radius: 10px; text-align: center; font-size: 16px; font-weight: 700;
+  color: #1e293b; cursor: pointer; font-family: 'Inter', sans-serif;
+}
+.calc-key.zero { grid-column: span 1; }
+.calc-key.clear { background: #FFF0F0; border-color: #FECDD3; color: #EF4444; }
+.calc-key.back { background: #EEF2FF; border-color: #C7D2FE; color: #4F46E5; }
+
+/* 버튼 */
+.btn-primary {
+  width: 100%; padding: 12px;
+  background: #4F46E5; color: white; border: none;
+  border-radius: 12px; font-size: 14px; font-weight: 700;
+  font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.15s;
+  margin-top: auto;
+}
+.btn-primary:hover { background: #4338CA; }
+.btn-primary:disabled { background: #C7D2FE; cursor: not-allowed; }
+
+/* 결정 버튼 */
+.decision-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto; }
+.decision-save, .decision-spend {
+  padding: 12px 6px; border-radius: 12px; font-size: 13px; font-weight: 700;
+  cursor: pointer; font-family: 'Inter', sans-serif; text-align: center; line-height: 1.4; border: 2px solid;
+}
+.decision-save { background: #F0FDF4; border-color: #86EFAC; color: #15803D; }
+.decision-spend { background: #FFF1F2; border-color: #FECDD3; color: #E11D48; }
+
+/* AI 답변 영역 */
+.ai-answer {
+  background: #EEF2FF; border-radius: 12px; padding: 12px 14px;
+  font-size: 13px; color: #1e293b; line-height: 1.6; flex: 1;
+  overflow-y: auto; margin-bottom: 10px; min-height: 0;
+}
+.quick-q { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+.quick-q-btn {
+  padding: 6px 10px; background: #EEF2FF; border: 1.5px solid #C7D2FE;
+  border-radius: 16px; font-size: 11px; font-weight: 700; color: #4F46E5;
+  cursor: pointer; font-family: 'Inter', sans-serif;
+}
+.chat-input-row { display: flex; gap: 6px; margin-top: auto; }
+.chat-input {
+  flex: 1; padding: 10px 12px; background: #F4F6FF; border: 1.5px solid #E0E4FF;
+  border-radius: 10px; font-size: 13px; font-family: 'Inter', sans-serif; outline: none;
+}
+.chat-send {
+  padding: 10px 16px; background: #4F46E5; color: white; border: none;
+  border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+
+/* 최근 내역 */
+.recent-list { overflow-y: auto; flex: 1; min-height: 0; }
+.recent-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 0; border-bottom: 1px solid #F4F6FF;
+}
+.recent-icon {
+  width: 32px; height: 32px; background: #F4F6FF; border-radius: 9px;
+  display: flex; align-items: center; justify-content: center; font-size: 16px;
+}
+.recent-empty { text-align: center; padding: 24px 0; color: #94a3b8; }
+
+/* 폭죽 */
+@keyframes confetti-fall {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+.confetti-piece {
+  position: fixed; width: 10px; height: 10px; border-radius: 2px;
+  animation: confetti-fall 2.5s ease-in forwards;
+  z-index: 9999; pointer-events: none;
+}
+
+/* 흔들기 */
+@keyframes shake {
+  0%,100%{transform:translateX(0)}
+  15%{transform:translateX(-10px)}30%{transform:translateX(10px)}
+  45%{transform:translateX(-7px)}60%{transform:translateX(7px)}
+  75%{transform:translateX(-3px)}90%{transform:translateX(3px)}
+}
+.shake { animation: shake 0.6s ease-in-out; }
+
+/* 캐릭터 */
+@keyframes bounce-char {
+  0%,100%{transform:translateY(0) scale(1)}
+  25%{transform:translateY(-12px) scale(1.12)}
+  75%{transform:translateY(-7px) scale(1.06)}
+}
+@keyframes cry-char {
+  0%,100%{transform:rotate(0)}25%{transform:rotate(-6deg)}75%{transform:rotate(6deg)}
+}
+.char-bounce { animation: bounce-char 0.7s ease-in-out 3; }
+.char-cry { animation: cry-char 0.35s ease-in-out 5; }
+.effect-overlay { position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:9998; }
+
+@keyframes star-burst {
+  0% { transform: translate(-50%,-50%) scale(0) rotate(0deg); opacity: 1; }
+  50% { transform: translate(-50%,-50%) scale(1.5) rotate(180deg); opacity: 1; }
+  100% { transform: translate(-50%,-50%) scale(0) rotate(360deg); opacity: 0; }
+}
+
+/* 좁은 화면 대응 */
+@media (max-width: 860px) {
+  .top-row, .bottom-row { grid-template-columns: 1fr; }
+  .bottom-row { flex: none; }
+  .card { min-height: 220px; }
+}
